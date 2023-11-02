@@ -1,0 +1,54 @@
+﻿[
+  {
+    "Id": 1,
+    "Brand": "Coca-cola",
+    "Carbohydrate": 1200,
+    "Fat": 200,
+    "sugars": 200,
+    "Enerygy": 2000,
+    "PossibleAllergen": "None",
+    "Price": 10,
+    "Type": "soda"
+  },
+  {
+    "Id": 2,
+    "Brand": "Snickers",
+    "Carbohydrate": 1200,
+    "Fat": 200,
+    "sugars": 200,
+    "Enerygy": 2000,
+    "PossibleAllergen": "None",
+    "Price": 15,
+    "Type": "snack"
+  },
+  {
+    "Id": 3,
+    "Brand": "Mars",
+    "Carbohydrate": 1200,
+    "Fat": 200,
+    "sugars": 200,
+    "Enerygy": 2000,
+    "PossibleAllergen": "None",
+    "Price": 16,
+    "Type": "snack"
+  },
+  {
+    "Id": 4,
+    "Brand": "Marlboro",
+    "Carbohydrate": 1200,
+    "Fat": 200,
+    "sugars": 200,
+    "Enerygy": 2000,
+    "PossibleAllergen": "None",
+    "Price": 40,
+    "Type": "nicotine"
+  }
+
+
+
+
+
+
+
+
+]
