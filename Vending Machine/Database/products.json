@@ -1,7 +1,18 @@
 ﻿[
   {
     "Id": 1,
-    "Brand": "Coca-cola",
+    "Brand": "Julmust",
+    "Carbohydrate": 1200,
+    "Fat": 200,
+    "sugars": 200,
+    "Enerygy": 2000,
+    "PossibleAllergen": "None",
+    "Price": 15,
+    "Type": "soda"
+  },
+  {
+    "Id": 2,
+    "Brand": "Trocadero",
     "Carbohydrate": 1200,
     "Fat": 200,
     "sugars": 200,
@@ -11,7 +22,19 @@
     "Type": "soda"
   },
   {
-    "Id": 2,
+    "Id": 3,
+    "Brand": "Coca-cola",
+    "Carbohydrate": 1200,
+    "Fat": 200,
+    "sugars": 200,
+    "Enerygy": 2000,
+    "PossibleAllergen": "None",
+    "Price": 10,
+    "Type": "soda"
+  },
+
+  {
+    "Id": 4,
     "Brand": "Snickers",
     "Carbohydrate": 1200,
     "Fat": 200,
@@ -22,7 +45,7 @@
     "Type": "snack"
   },
   {
-    "Id": 3,
+    "Id": 5,
     "Brand": "Mars",
     "Carbohydrate": 1200,
     "Fat": 200,
@@ -33,7 +56,41 @@
     "Type": "snack"
   },
   {
-    "Id": 4,
+    "Id": 6,
+    "Brand": "Twix",
+    "Carbohydrate": 1200,
+    "Fat": 200,
+    "sugars": 200,
+    "Enerygy": 2000,
+    "PossibleAllergen": "None",
+    "Price": 16,
+    "Type": "snack"
+  },
+  {
+    "Id": 7,
+    "Brand": "XQS Tropical",
+    "Carbohydrate": 1200,
+    "Fat": 200,
+    "sugars": 200,
+    "Enerygy": 2000,
+    "PossibleAllergen": "None",
+    "Price": 35,
+    "Type": "nicotine"
+  },
+
+  {
+    "Id": 8,
+    "Brand": "XQS Cactus Sour",
+    "Carbohydrate": 1200,
+    "Fat": 200,
+    "sugars": 200,
+    "Enerygy": 2000,
+    "PossibleAllergen": "None",
+    "Price": 35,
+    "Type": "nicotine"
+  },
+  {
+    "Id": 9,
     "Brand": "Marlboro",
     "Carbohydrate": 1200,
     "Fat": 200,
@@ -43,12 +100,4 @@
     "Price": 40,
     "Type": "nicotine"
   }
-
-
-
-
-
-
-
-
 ]

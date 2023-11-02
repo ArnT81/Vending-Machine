@@ -7,13 +7,7 @@ namespace Vending_Machine.Views.Products
         public static void All(List<dynamic> products)
         {
             Console.WriteLine("\n\n\nAvailable Products\n");
-            foreach (var product in products)
-            {
-                Console.WriteLine("Brand: " + product.Brand);
-                Console.WriteLine("Type: " + product.Type);
-                Console.WriteLine($"Price: {product.Price}kr");
-                Console.WriteLine();
-            }
+            foreach (var product in products) Console.WriteLine($"Brand: {product.Brand}  Price: {product.Price}kr");
         }
 
         public static void One(Product product)
