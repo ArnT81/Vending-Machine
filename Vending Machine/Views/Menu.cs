@@ -19,7 +19,7 @@ namespace Vending_Machine.Views
         }
 
         public static char ChooseProductMenu(string[] alternatives) => GetUserInput("\n\n\nProducts alternative", alternatives);
-        public static int ChooseProductOfTypeMenu(string[] alternatives) => GetUserInputDblDigit("\n\n\nProducts alternative", alternatives);
+        public static int ChooseProductOfTypeMenu(string header, string[] alternatives) => GetUserInputDblDigit($"\n\n\n{header}", alternatives);
         public static char InsertMoneyMenu(string[] alternatives) => GetUserInput("\n\n\nAccepted denomination", alternatives);
 
 

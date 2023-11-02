@@ -28,19 +28,21 @@ namespace Vending_Machine.Controllers
 
             //Separates Types
             List<dynamic> temp = new List<dynamic>();
+            string header = "sgjkdfsökj";
             foreach (var item in AllProducts)
             {
-                if (typeOfProduct == '1' && item is Product.Soda) temp.Add(item);
-                if (typeOfProduct == '2' && item is Product.Snack) temp.Add(item);
-                if (typeOfProduct == '3' && item is Product.Nicotine) temp.Add(item);
+                if (typeOfProduct == '1' && item is Product.Soda) { temp.Add(item); header = "Choose beverage"; }
+                if (typeOfProduct == '2' && item is Product.Snack) { temp.Add(item); header = "Choose snack"; }
+                if (typeOfProduct == '3' && item is Product.Nicotine) { temp.Add(item); header = "Choose nicotine product"; }
             }
+
 
 
             //Display list of elected type to choose from
             List<string> listOfProducts = new List<string>();
             for (var i = 0; i < temp.Count; i++) listOfProducts.Add($"{i + 1}. {temp[i].Brand} Price: {temp[i].Price}");
             string[] arrayOfOptions = listOfProducts.Select(i => i.ToString()).ToArray();
-            int chosenProduct = Menu.ChooseProductOfTypeMenu(arrayOfOptions);
+            int chosenProduct = Menu.ChooseProductOfTypeMenu(header, arrayOfOptions);
 
 
             //Purchase
