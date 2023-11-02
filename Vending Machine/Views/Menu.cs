@@ -6,7 +6,7 @@ namespace Vending_Machine.Views
     {
         public static void MainMenu()
         {
-            string[] alternatives = { "1. View all products", "2. Insert Money", "3. Purchase", "4. Details", "5. Consume", "6. End transation" };
+            string[] alternatives = { "1. View all products", "2. Insert Money", "3. Purchase", "4. Details", "5. End transation" };
             char choice = GetUserInput("Main menu", alternatives);
             VendingMachineController vendingMachineController = new VendingMachineController();
 
@@ -14,12 +14,9 @@ namespace Vending_Machine.Views
             if (choice == '2') vendingMachineController.InsertMoney();
             if (choice == '3') vendingMachineController.Purchase();
             if (choice == '4') vendingMachineController.Details();
-            if (choice == '5') vendingMachineController.Consume();
-            if (choice == '6') vendingMachineController.EndTransaction();
+            if (choice == '5') vendingMachineController.EndTransaction();
             else return;
         }
-
-
 
         public static char ChooseProductMenu(string[] alternatives) => GetUserInput("\n\n\nProducts alternative", alternatives);
         public static int ChooseProductOfTypeMenu(string[] alternatives) => GetUserInputDblDigit("\n\n\nProducts alternative", alternatives);

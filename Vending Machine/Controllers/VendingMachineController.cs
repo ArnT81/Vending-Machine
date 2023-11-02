@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Vending_Machine.Models;
+﻿using Vending_Machine.Models;
 using Vending_Machine.Services;
 using Vending_Machine.Views;
 using Vending_Machine.Views.Money;
@@ -66,7 +65,10 @@ namespace Vending_Machine.Controllers
                 })();
 
 
-                //consume
+                //save List of bought products to consume?
+
+
+                Consume(product);
             }
         }
 
@@ -112,10 +114,8 @@ namespace Vending_Machine.Controllers
         }
 
 
-
-        public void Consume() { Console.WriteLine(""); }
-        //public void Consume(Product.Soda soda) { Console.WriteLine(""); }
-        //public void Consume(Product.Snack snack) { Console.WriteLine(""); }
-        //public void Consume(Product.Nicotine nicotine) { Console.WriteLine(""); }
+        public void Consume(Product.Soda soda) => soda.Consume();
+        public void Consume(Product.Snack snack) => snack.Consume();
+        public void Consume(Product.Nicotine nicotine) => nicotine.Consume();
     }
 }
