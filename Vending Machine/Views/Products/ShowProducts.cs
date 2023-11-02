@@ -11,13 +11,14 @@ namespace Vending_Machine.Views.Products
             {
                 Console.WriteLine("Brand: " + product.Brand);
                 Console.WriteLine("Type: " + product.Type);
+                Console.WriteLine($"Price: {product.Price}kr");
                 Console.WriteLine();
             }
         }
 
         public static void One(Product product)
         {
-            Console.WriteLine("\n\n\n Product Information\n");
+            Console.WriteLine("\n\n\nProduct Information\n");
 
             Console.WriteLine("Id: " + product.Id);
             Console.WriteLine("Brand: " + product.Brand);
@@ -26,7 +27,6 @@ namespace Vending_Machine.Views.Products
             Console.WriteLine("Sugars: " + product.Sugars);
             Console.WriteLine("Possible allergens: " + product.PossibleAllergen);
             Console.WriteLine($"Price: {product.Price}kr");
-            Console.WriteLine("Type: " + product.Type);
             Console.WriteLine();
         }
     }

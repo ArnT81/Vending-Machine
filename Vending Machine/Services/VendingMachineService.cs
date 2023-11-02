@@ -48,11 +48,8 @@ namespace Vending_Machine.Services
         {
             Console.WriteLine($"Thank you for your purchase, here is your remaining {MoneyPoolRepo.Read().CurrentCostumerBalance}kr");
             MoneyPoolRepo.Delete();
-            // save money to db
         }
 
-
-        //Needs to call it again to get the updated value after purchase
-        public decimal ShowMeTheMoney() => MoneyPoolRepo.Read().CurrentCostumerBalance; 
+        public decimal ShowMeTheMoney() => MoneyPoolRepo.Read().CurrentCostumerBalance;
     }
 }

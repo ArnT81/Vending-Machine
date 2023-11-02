@@ -40,7 +40,7 @@ namespace Vending_Machine.Repositories
                 '6' => 100,
                 '7' => 500,
                 '8' => 1000,
-                _ => 0
+                _ => throw new ArgumentOutOfRangeException()
             };
 
             moneyPool.CurrentCostumerBalance = sum;
@@ -61,7 +61,7 @@ namespace Vending_Machine.Repositories
             MoneyPool moneyPool = FileRead();
             decimal costumerMoney = moneyPool.CurrentCostumerBalance;
             decimal VendingMachineMoney = moneyPool.Balance;
-    
+
             //Removes money from the customer 
             moneyPool.CurrentCostumerBalance = costumerMoney - cost;
             //Adds money to the machines balance

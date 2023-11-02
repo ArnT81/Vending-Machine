@@ -2,6 +2,7 @@
 using Vending_Machine.Models;
 using Vending_Machine.Services;
 using Vending_Machine.Views;
+using Vending_Machine.Views.Money;
 using Vending_Machine.Views.Products;
 
 namespace Vending_Machine.Controllers
@@ -43,16 +44,30 @@ namespace Vending_Machine.Controllers
             int chosenProduct = Menu.ChooseProductOfTypeMenu(arrayOfOptions);
 
 
-            //Continue transaction
+            //Purchase
             var product = temp.Where(a => a.Id == temp[chosenProduct - 1].Id).ToList()[0];
             VendingMachineService.Purchase(product);
 
-            //Visa pengar kvar och välja fortsätt eller avsluta
-            //till en wiew först
-            Console.WriteLine($"You've got {VendingMachineService.ShowMeTheMoney()}kr left and this product costs {product.Price}kr, please insert more money or select another product.");
-            VendingMachineService.ShowMeTheMoney();
+
+            //Show Balance
+            if (VendingMachineService.ShowMeTheMoney() > 0)
+            {
+                ShowMoney.Balance(VendingMachineService.ShowMeTheMoney());
 
 
+                //Create new transaction?
+                string[] continueShoppingAlternatives = { "1. Yes", "2. No" };
+                char continueShoppingMenu = Menu.GetUserInput("Would you like to buy something else?", continueShoppingAlternatives);
+                (continueShoppingMenu switch
+                {
+                    '1' => (Action)Purchase,
+                    '2' => EndTransaction,
+                    _ => throw new ArgumentOutOfRangeException()
+                })();
+
+
+                //consume
+            }
         }
 
 

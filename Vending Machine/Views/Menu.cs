@@ -6,15 +6,16 @@ namespace Vending_Machine.Views
     {
         public static void MainMenu()
         {
-            string[] alternatives = { "1. Purchase", "2. Details", "3. Insert money", "4. End transaction", "5. Use" };
+            string[] alternatives = { "1. View all products", "2. Insert Money", "3. Purchase", "4. Details", "5. Consume", "6. End transation" };
             char choice = GetUserInput("Main menu", alternatives);
             VendingMachineController vendingMachineController = new VendingMachineController();
 
-            if (choice == '1') vendingMachineController.Purchase();
-            if (choice == '2') vendingMachineController.Details();
-            if (choice == '3') vendingMachineController.InsertMoney();
-            if (choice == '4') vendingMachineController.EndTransaction();
+            if (choice == '1') vendingMachineController.ViewAllProducts();
+            if (choice == '2') vendingMachineController.InsertMoney();
+            if (choice == '3') vendingMachineController.Purchase();
+            if (choice == '4') vendingMachineController.Details();
             if (choice == '5') vendingMachineController.Consume();
+            if (choice == '6') vendingMachineController.EndTransaction();
             else return;
         }
 
@@ -22,7 +23,6 @@ namespace Vending_Machine.Views
 
         public static char ChooseProductMenu(string[] alternatives) => GetUserInput("\n\n\nProducts alternative", alternatives);
         public static int ChooseProductOfTypeMenu(string[] alternatives) => GetUserInputDblDigit("\n\n\nProducts alternative", alternatives);
-
         public static char InsertMoneyMenu(string[] alternatives) => GetUserInput("\n\n\nAccepted denomination", alternatives);
 
 

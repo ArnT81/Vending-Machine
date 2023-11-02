@@ -27,27 +27,24 @@ namespace Vending_Machine.Repositories
         }
 
 
-        //  CREATE
+        //  CREATE (Purchase)
         public Product Create(Product.Soda product)
         {
-            Console.WriteLine("In VendingMachineRepo Create Soda " + product.Price);
-
-
+            Console.WriteLine($"{product.Price}kr has been withdrawn from your balance");
             MoneyPoolRepo.Update(product.Price);
 
             return product;
         }
         public Product Create(Product.Snack product)
         {
-            Console.WriteLine("In VendingMachineRepo Create Snack " + product.Price);
-
+            Console.WriteLine($"{product.Price}kr has been withdrawn from your balance");
             MoneyPoolRepo.Update(product.Price);
 
             return product;
         }
         public Product Create(Product.Nicotine product)
         {
-            Console.WriteLine("In VendingMachineRepo Create Nicotine " + product.Price);
+            Console.WriteLine($"{product.Price}kr has been withdrawn from your balance");
             MoneyPoolRepo.Update(product.Price);
 
             return product;
