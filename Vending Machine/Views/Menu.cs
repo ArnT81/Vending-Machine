@@ -26,8 +26,6 @@ namespace Vending_Machine.Views
 
 
 
-
-
         public static char GetUserInput(string header, string[] alternatives)
         {
             char key = 'a';

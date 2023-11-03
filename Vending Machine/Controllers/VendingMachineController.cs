@@ -37,7 +37,6 @@ namespace Vending_Machine.Controllers
             }
 
 
-
             //Display list of elected type to choose from
             List<string> listOfProducts = new List<string>();
             for (var i = 0; i < temp.Count; i++) listOfProducts.Add($"{i + 1}. {temp[i].Brand} Price: {temp[i].Price}");
@@ -56,21 +55,18 @@ namespace Vending_Machine.Controllers
                 ShowMoney.Balance(VendingMachineService.ShowMeTheMoney());
 
 
-                //Create new transaction?
+                //Create new transaction or consume the product/products
                 string[] continueShoppingAlternatives = { "1. Yes", "2. No" };
                 char continueShoppingMenu = Menu.GetUserInput("Would you like to buy something else?", continueShoppingAlternatives);
                 (continueShoppingMenu switch
                 {
                     '1' => (Action)Purchase,
-                    '2' => EndTransaction,
+                    '2' => ConsumeProducts,
                     _ => throw new ArgumentOutOfRangeException()
                 })();
 
-
-                //save List of bought products to consume?
-
-
-                Consume(product);
+                             
+                EndTransaction();
             }
         }
 
@@ -110,14 +106,16 @@ namespace Vending_Machine.Controllers
         }
 
 
-        public void EndTransaction()
+        public void ConsumeProducts()
         {
-            VendingMachineService.EndTransaction();
+            var boughtProducts = VendingMachineService.GetBoughtProducts();
+            foreach (var productToConsume in boughtProducts) Consume(productToConsume);
         }
 
 
         public void Consume(Product.Soda soda) => soda.Consume();
         public void Consume(Product.Snack snack) => snack.Consume();
         public void Consume(Product.Nicotine nicotine) => nicotine.Consume();
+        public void EndTransaction() => VendingMachineService.EndTransaction();
     }
 }

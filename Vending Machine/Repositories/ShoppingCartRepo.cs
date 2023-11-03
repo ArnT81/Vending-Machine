@@ -1,22 +1,17 @@
 ﻿using System.Text.Json;
 using Vending_Machine.Models;
 
-
 namespace Vending_Machine.Repositories
 {
-    internal class VendingMachineRepo
+    public class ShoppingCartRepo
     {
         private string path;
-        private MoneyPoolRepo MoneyPoolRepo;
-        private ShoppingCartRepo ShoppingCartRepo;
 
-        public VendingMachineRepo()
+        public ShoppingCartRepo()
         {
-            MoneyPoolRepo = new MoneyPoolRepo();
-            ShoppingCartRepo = new ShoppingCartRepo();
             try
             {
-                path = Directory.GetCurrentDirectory().Split("\\bin")[0] + "\\Database\\products.json";
+                path = Directory.GetCurrentDirectory().Split("\\bin")[0] + "\\Database\\shoppingCart.json";
             }
             catch (FileNotFoundException ex)
             {
@@ -32,31 +27,40 @@ namespace Vending_Machine.Repositories
         //  CREATE (Purchase)
         public Product Create(Product.Soda product)
         {
-            Console.WriteLine($"{product.Price}kr has been withdrawn from your balance");
-            MoneyPoolRepo.Update(product.Price);
+            int newId = 1;
+            List<dynamic> boughtProducts = FileRead();
 
-            //SHOPPINGCART
-            ShoppingCartRepo.Create(product);
+            if (boughtProducts.Count > 0) newId = boughtProducts.OrderBy(a => a.Id).Last().Id + 1;
+            product.Id = newId;
+
+            boughtProducts.Add(product);
+            FileMutations(boughtProducts);
 
             return product;
         }
         public Product Create(Product.Snack product)
         {
-            Console.WriteLine($"{product.Price}kr has been withdrawn from your balance");
-            MoneyPoolRepo.Update(product.Price);
+            int newId = 1;
+            List<dynamic> boughtProducts = FileRead();
 
-            //SHOPPINGCART
-            ShoppingCartRepo.Create(product);
+            if (boughtProducts.Count > 0) newId = boughtProducts.OrderBy(a => a.Id).Last().Id + 1;
+            product.Id = newId;
+
+            boughtProducts.Add(product);
+            FileMutations(boughtProducts);
 
             return product;
         }
         public Product Create(Product.Nicotine product)
         {
-            Console.WriteLine($"{product.Price}kr has been withdrawn from your balance");
-            MoneyPoolRepo.Update(product.Price);
+            int newId = 1;
+            List<dynamic> boughtProducts = FileRead();
 
-            //SHOPPINGCART
-            ShoppingCartRepo.Create(product);
+            if (boughtProducts.Count > 0) newId = boughtProducts.OrderBy(a => a.Id).Last().Id + 1;
+            product.Id = newId;
+
+            boughtProducts.Add(product);
+            FileMutations(boughtProducts);
 
             return product;
         }
@@ -69,9 +73,10 @@ namespace Vending_Machine.Repositories
         //  DELETE
         public bool Delete()
         {
-            //SHOULD HAPPEN HERE MONEY TO
+            List<dynamic> boughtProducts = new List<dynamic>();
+            
+            FileMutations(boughtProducts);
 
-            ShoppingCartRepo.Delete();
             return true;
         }
 

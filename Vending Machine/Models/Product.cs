@@ -33,7 +33,7 @@
         {
             public override void Consume()
             {
-                Console.WriteLine("Drinking the beverage");
+                Console.WriteLine("\nDrinking the beverage");
             }
         }
 
@@ -41,7 +41,7 @@
         {
             public override void Consume()
             {
-                Console.WriteLine("Eating the snack");
+                Console.WriteLine("\nEating the snack");
             }
         }
 
@@ -49,7 +49,7 @@
         {
            public override void Consume()
             {
-                Console.WriteLine("consuming nicotine product");
+                Console.WriteLine("\nconsuming nicotine product");
             }
         }
     }

@@ -8,11 +8,13 @@ namespace Vending_Machine.Services
     {
         private VendingMachineRepo VendingMachineRepo;
         private MoneyPoolRepo MoneyPoolRepo;
+        private ShoppingCartRepo ShoppingCartRepo;
         private decimal MoneyLeft;
         public VendingMachineService()
         {
             VendingMachineRepo = new VendingMachineRepo();
             MoneyPoolRepo = new MoneyPoolRepo();
+            ShoppingCartRepo = new ShoppingCartRepo();
             MoneyLeft = MoneyPoolRepo.Read().CurrentCostumerBalance;
         }
 
@@ -35,6 +37,7 @@ namespace Vending_Machine.Services
         }
 
         public List<dynamic> ShowAll() => VendingMachineRepo.ReadAll();
+        public List<dynamic> GetBoughtProducts() => ShoppingCartRepo.ReadAll();
 
         public void Details()
         {
@@ -47,7 +50,9 @@ namespace Vending_Machine.Services
         public void EndTransaction()
         {
             Console.WriteLine($"Thank you for your purchase, here is your remaining {MoneyPoolRepo.Read().CurrentCostumerBalance}kr");
+            
             MoneyPoolRepo.Delete();
+            ShoppingCartRepo.Delete();
         }
 
         public decimal ShowMeTheMoney() => MoneyPoolRepo.Read().CurrentCostumerBalance;

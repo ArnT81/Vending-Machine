@@ -3,7 +3,11 @@ Menu.MainMenu();
 
 
 //TODO
-
-// More products?
-// List of bought products for consumtion?
 // Quantity for products?
+
+
+
+//BUG
+// Executes VendingMachineController.Purchase once for every product bought
+
+//while loop that reruns the whole block and change state when user choose "No" in continueShoppingMenu 
