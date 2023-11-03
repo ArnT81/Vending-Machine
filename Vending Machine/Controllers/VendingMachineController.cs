@@ -21,53 +21,57 @@ namespace Vending_Machine.Controllers
 
         public void Purchase()
         {
-            //choose which type of product to buy
-            string[] alternatives = { "1. Beverage", "2. Snack", "3. Nicotine" };
-            char typeOfProduct = Menu.GetUserInput("Type of product", alternatives);
+            bool endProgram = false;
 
-
-            //Separates Types
-            List<dynamic> temp = new List<dynamic>();
-            string header = "sgjkdfsökj";
-            foreach (var item in AllProducts)
+            while (!endProgram)
             {
-                if (typeOfProduct == '1' && item is Product.Soda) { temp.Add(item); header = "Choose beverage"; }
-                if (typeOfProduct == '2' && item is Product.Snack) { temp.Add(item); header = "Choose snack"; }
-                if (typeOfProduct == '3' && item is Product.Nicotine) { temp.Add(item); header = "Choose nicotine product"; }
-            }
+                //choose which type of product to buy
+                string[] alternatives = { "1. Beverage", "2. Snack", "3. Nicotine" };
+                char typeOfProduct = Menu.GetUserInput("Type of product", alternatives);
 
 
-            //Display list of elected type to choose from
-            List<string> listOfProducts = new List<string>();
-            for (var i = 0; i < temp.Count; i++) listOfProducts.Add($"{i + 1}. {temp[i].Brand} Price: {temp[i].Price}");
-            string[] arrayOfOptions = listOfProducts.Select(i => i.ToString()).ToArray();
-            int chosenProduct = Menu.ChooseProductOfTypeMenu(header, arrayOfOptions);
-
-
-            //Purchase
-            var product = temp.Where(a => a.Id == temp[chosenProduct - 1].Id).ToList()[0];
-            VendingMachineService.Purchase(product);
-
-
-            //Show Balance
-            if (VendingMachineService.ShowMeTheMoney() > 0)
-            {
-                ShowMoney.Balance(VendingMachineService.ShowMeTheMoney());
-
-
-                //Create new transaction or consume the product/products
-                string[] continueShoppingAlternatives = { "1. Yes", "2. No" };
-                char continueShoppingMenu = Menu.GetUserInput("Would you like to buy something else?", continueShoppingAlternatives);
-                (continueShoppingMenu switch
+                //Separates Types
+                List<dynamic> temp = new List<dynamic>();
+                string header = "sgjkdfsökj";
+                foreach (var item in AllProducts)
                 {
-                    '1' => (Action)Purchase,
-                    '2' => ConsumeProducts,
-                    _ => throw new ArgumentOutOfRangeException()
-                })();
+                    if (typeOfProduct == '1' && item is Product.Soda) { temp.Add(item); header = "Choose beverage"; }
+                    if (typeOfProduct == '2' && item is Product.Snack) { temp.Add(item); header = "Choose snack"; }
+                    if (typeOfProduct == '3' && item is Product.Nicotine) { temp.Add(item); header = "Choose nicotine product"; }
+                }
 
-                             
-                EndTransaction();
+
+                //Display list of elected type to choose from
+                List<string> listOfProducts = new List<string>();
+                for (var i = 0; i < temp.Count; i++) listOfProducts.Add($"{i + 1}. {temp[i].Brand} Price: {temp[i].Price}");
+                string[] arrayOfOptions = listOfProducts.Select(i => i.ToString()).ToArray();
+                int chosenProduct = Menu.ChooseProductOfTypeMenu(header, arrayOfOptions);
+
+
+                //Purchase
+                var product = temp.Where(a => a.Id == temp[chosenProduct - 1].Id).ToList()[0];
+                VendingMachineService.Purchase(product);
+
+
+                //Show Balance
+                if (VendingMachineService.ShowMeTheMoney() > 0)
+                {
+                    ShowMoney.Balance(VendingMachineService.ShowMeTheMoney());
+
+
+                    //Create new transaction or consume the product/products
+                    string[] continueShoppingAlternatives = { "1. Yes", "2. No" };
+                    char continueShoppingMenu = Menu.GetUserInput("Would you like to buy something else?", continueShoppingAlternatives);
+
+                    if (continueShoppingMenu == '2')
+                    {
+                        ConsumeProducts();
+                        endProgram = true;
+                    }
+                }
             }
+
+            EndTransaction();
         }
 
 

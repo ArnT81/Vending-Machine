@@ -49,7 +49,7 @@ namespace Vending_Machine.Services
 
         public void EndTransaction()
         {
-            Console.WriteLine($"Thank you for your purchase, here is your remaining {MoneyPoolRepo.Read().CurrentCostumerBalance}kr");
+            Console.WriteLine($"\nThank you for your purchase, here is your remaining {MoneyPoolRepo.Read().CurrentCostumerBalance}kr\n");
             
             MoneyPoolRepo.Delete();
             ShoppingCartRepo.Delete();
